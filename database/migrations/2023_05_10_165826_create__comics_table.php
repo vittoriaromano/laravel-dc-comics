@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string ('thumb');
             $table->float('price', 4, 2, true);
             $table->string('series',30);
-            $table->timestamps();
             $table->date('sale_date');
             $table->string('artists');
             $table->string('writers');
+            $table->timestamps();
         });
     }
 
