@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Comic;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comic;
 
 class ComicController extends Controller
 {
@@ -25,7 +26,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('comic.create', compact('comic'));
+        return view('comic.create');
     }
 
     /**
@@ -36,25 +37,23 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //salvo dati in arrivo dal form
         $data = $request->all();
-        //creo un modello Pasta
+
         $newComic = new Comic();
 
-        //mapping dei campi
-        $newComic->src= $data["src"];
-        $newComic->titolo = $data["titolo"];
-        $newComic->tipo = $data["tipo"];
-        $newComic->cottura = $data["cottura"];
-        $newComic->peso = $data["peso"];
-        $newComic->descrizione = $data["descrizione"];
+        $newComic->title = $data['title'];
+        $newComic->description = $data['description'];
+        $newComic->thumb = $data['thumb'];
+        $newComic->price = $data['price'];
+        $newComic->series = $data['series'];
+        $newComic->sale_date = $data['sale_date'];
+        $newComic->type = $data['type'];
+        $newComic->artists = ($data['artists']);
+        $newComic->writers = ($data['writers']);
+        $newComic->save();
 
-        //non abbiamo ID
+        return redirect()->route('comics.show', $newComic->id);
 
-        //salvataggio in tabella
-        $newPasta->save();
-
-        return redirect()->route('pastas.show', $newPasta->id);
     }
 
     /**
@@ -63,9 +62,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        //
+        return view('comic.show', compact('comic'));
     }
 
     /**

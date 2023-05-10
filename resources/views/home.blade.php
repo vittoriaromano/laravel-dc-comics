@@ -9,6 +9,8 @@
     <body>
         <div class="container">
             <h1>Comics</h1>
+            <ul>
+            </ul>
         </div>
 
     </body>
