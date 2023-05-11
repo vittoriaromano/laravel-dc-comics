@@ -2,7 +2,7 @@
 
 @section('page.title')
 <div class="container">
-  Modifica pasta: {{ $comic->title }}
+  <h1>{{ $comic->title }}</h1>
 </div>
 @endsection
 
@@ -10,7 +10,7 @@
 
 <div class="container">
     <div>
-        <a href="{{ route('comics.index') }}" class="btn btn-primary btn-sm">Torna all'elenco</a>
+        <a href="{{ route('comics.index') }}" class="btn btn-primary btn-sm">Back to List</a>
     </div>
 
     <form action="{{ route('comics.update', $comic->id) }}" method="POST">
@@ -55,10 +55,5 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-
-
-
-
 </div>
-
 @endsection
