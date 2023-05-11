@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Http\Request;
+
 
 class ComicController extends Controller
 {
@@ -41,16 +42,18 @@ class ComicController extends Controller
 
         $newComic = new Comic();
 
-        $newComic->title = $data['title'];
-        $newComic->description = $data['description'];
-        $newComic->thumb = $data['thumb'];
-        $newComic->price = $data['price'];
-        $newComic->series = $data['series'];
-        $newComic->sale_date = $data['sale_date'];
-        $newComic->type = $data['type'];
-        $newComic->artists = ($data['artists']);
-        $newComic->writers = ($data['writers']);
+        // $newComic->title = $data['title'];
+        // $newComic->description = $data['description'];
+        // $newComic->thumb = $data['thumb'];
+        // $newComic->price = $data['price'];
+        // $newComic->series = $data['series'];
+        // $newComic->sale_date = $data['sale_date'];
+        // $newComic->type = $data['type'];
+        // $newComic->artists = implode(" ,",$data['artists']);
+        // $newComic->writers = implode(" ,",$data['artists']);
+        $newComic->fill($data);
         $newComic->save();
+
 
         return redirect()->route('comics.show', $newComic->id);
 
