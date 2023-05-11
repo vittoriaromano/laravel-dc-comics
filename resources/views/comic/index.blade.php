@@ -8,9 +8,9 @@
 
 @section('page.main')
 <div class="container">
-    <a href="{{ route('comics.create') }}" class="btn btn-success">Aggiungi Comic</a>
+    <a href="{{ route('comics.create') }}" class="btn btn-success">Add Comic</a>
     @foreach ($comics as $comic)
-    <div class="d-flex flex-wrap">
+    <div class="d-flex">
     <div class="card m-3" style="width: 18rem;" >
     <img class="card-img-top" src="{{ $comic->thumb }}" alt="Card image cap">
     <div class="card-body">
@@ -25,14 +25,13 @@
             <li class="list-group-item">{{ $comic->artists }}</li>
             <li class="list-group-item">{{ $comic->writers }}</li>
         </ul>
-        <div class="card-body">
-            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary btn-sm">Dettagli</a>
-            <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary btn-sm">Modifica</a>
+        <div class="card-body d-flex">
+            <a  href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary btn-sm mx-1">Details</a>
+            <a  href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary btn-sm mx-1">Modify</a>
             <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                 @csrf
-                {{-- aggiungiamo il metodo --}}
                 @method('DELETE')
-                <input type="submit" value="Cancella" class="btn btn-danger btn-sm">
+                <input type="submit" value="Cancella" class="btn btn-danger btn-sm mx-1">
             </form>
         </div>
     </div>
